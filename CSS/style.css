@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-color:#E4F6F8 !important;
+}
+.heading {
+  text-align: center;
+  margin-top: 10px;
+}
+.alertSection{
+    height: 30px;
+    width: 100%;
+    margin-bottom: 32px;
+}
+section {
+  width: 50%;
+  margin: auto;
+}
+
+.input-group {
+  margin-top: 40px;
+}
+.displayEverything {
+  height: 200px;
+  width: 90%;
+  /* border:2px solid rgba(0, 0, 0, 0.425);
+    border-radius: 3px; */
+  margin: auto;
+}
+.partsOfSpeech {
+   margin:-28px 0px 18px 0px;
+  height: 10px;
+  font-style: italic;
+}
+.titleSynonyms {
+  margin-top: 4px;
+  font-family: arial, sans-serif;
+  color: green;
+  font-weight: 500;
+  font-style: italic;
+}
+.meaning {
+  margin-top: 1px;
+  padding: 18px 5px;
+  font-weight: 700;
+  font-family: arial, sans-serif;
+}
+.speaker{
+    visibility: hidden;
+
+}
+.speaker:hover{
+    cursor:pointer;
+}
+.visible{
+    visibility: visible;
+    color:#0B5ED7;
+}
