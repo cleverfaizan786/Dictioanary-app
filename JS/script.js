@@ -77,3 +77,5 @@ try {
   }
   inputText.value = "";
 }
+
+//console.log('Nice');
