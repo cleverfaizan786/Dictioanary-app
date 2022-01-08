@@ -12,7 +12,6 @@ const synonym = document.querySelector(".titleSynonyms");
 const display = document.querySelector(".displayEverything");
 const speakerIcon = document.querySelector(".speaker");
 const alertDisplay = document.querySelector(".alertSection");
-let newFormdata = new FormData();
 
 //Fetching data
 async function fetchData() {
@@ -41,7 +40,7 @@ function returndata() {
 
     const data = await fetchData();
     spinnerContainer.innerHTML = "";
-    console.log(data);
+    
     const { meanings } = data[0];
     const { partOfSpeech, definitions } = meanings[0];
     display.setAttribute(
