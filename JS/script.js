@@ -45,7 +45,7 @@ function returndata() {
     const { partOfSpeech, definitions } = meanings[0];
     display.setAttribute(
       "style",
-      "border:2px solid rgba(0, 0, 0, 0.422);border-radius:3px; height:220px; padding:30px 10px 15px 10px;"
+      " height:220px; padding:30px 10px 15px 10px;"
     );
     speakerIcon.classList.add("visible");
     partsOfspeech.textContent = partOfSpeech;
