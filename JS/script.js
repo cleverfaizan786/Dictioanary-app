@@ -90,3 +90,5 @@ async function pronounce() {
   }
   inputText.value = "";
 }
+
+//console.log('Nice');
