@@ -11,7 +11,8 @@ const similar = document.querySelector(".synonyms");
 const synonym = document.querySelector(".titleSynonyms");
 const display = document.querySelector(".displayEverything");
 const speakerIcon = document.querySelector(".speaker");
-const alertDisplay=document.querySelector('.alertSection')
+const alertDisplay = document.querySelector(".alertSection");
+let newFormdata = new FormData();
 
 //Fetching data
 async function fetchData() {
@@ -20,15 +21,16 @@ async function fetchData() {
   );
   return responseData.json();
 }
-// Adding Event Listener to button
-searchBtn.addEventListener("click", (e) => {
-  if(inputText.value==''){
-    alertDisplay.innerHTML=`<div class="alert alert-danger alert-dismissible fade show" role="alert">
+
+//Return to multiple event listeners
+function returndata() {
+  if (inputText.value == "") {
+    alertDisplay.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>Error!</strong> Please enter a keyword
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>`
-  return;
-  } 
+  </div>`;
+    return;
+  }
 
   const getData = async () => {
     spinnerContainer.innerHTML = `<div class="d-flex justify-content-center">
@@ -36,7 +38,7 @@ searchBtn.addEventListener("click", (e) => {
     <span class="visually-hidden">Loading...</span>
     </div>
     </div>`;
-    
+
     const data = await fetchData();
     spinnerContainer.innerHTML = "";
     console.log(data);
@@ -56,24 +58,36 @@ searchBtn.addEventListener("click", (e) => {
     // console.log(JSON.stringify(data,null,' '));
   };
 
-  getData();
+  return getData();
+
+}
+
+// Adding Event Listener to button
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+
+   return returndata();
+  }
 });
+
+searchBtn.addEventListener('click', ()=>{
+  return returndata();
+})
 
 async function pronounce() {
   let data = await fetchData();
-try {
-  if (data[0].phonetics[0] == undefined) {
-  alertDisplay.innerHTML=`<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  try {
+    if (data[0].phonetics[0] == undefined) {
+      alertDisplay.innerHTML = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>Not found!</strong> Sorry, no audio available for this query
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>`
-} else {
-  window.location = data[0].phonetics[0].audio;
-  console.clear()
-}
-}
-  catch(e){
-    console.log(e.message)
+</div>`;
+    } else {
+      window.location = data[0].phonetics[0].audio;
+      console.clear();
+    }
+  } catch (e) {
+    console.log(e.message);
   }
   inputText.value = "";
 }
